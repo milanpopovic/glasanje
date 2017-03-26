@@ -61,7 +61,7 @@ var server = http.createServer(function(request, response) {
 										response.writeHead(200, {"Content-Type": "text/plain"});
         						response.write(glasanjejs);
                     break;
-           case "/glasanje":
+          case "/glasanje":
                     ip = request.connection.remoteAddress
 /*
         						if (ip === poslednjaIP) {
@@ -71,35 +71,17 @@ var server = http.createServer(function(request, response) {
         						}
 */
         						poslednjaIP = ip
-                    //response.writeHead(200, {'Content-Type': 'text/plain'});
-          					//response.end("Glasanje prihvaceno")
-/*
-                    if (request.method == 'POST') {
-												var glas = '';
-
-												request.on('data', function (data) {
-														glas += data;
-												});
-
-												request.on('end', function () {
-                            glas = trim(glas)
-                            if (glas !== "") {
-															glasovi[glas]++;
-                            }
-												});
-										}
-*/
-                    glas="";
-                    request.on('data', function (data) {
-														glas += data;
-												});
-
-										request.on('end', function () {
-                            glas = trim(glas)
-                            if (glas !== "") {
-															glasovi[glas]++;
-                            }
-												});
+										var glas = '';
+										request.on('data', function (data) {
+												glas += data;
+										});
+										request.on('end', function () {                            
+                        glas = trim(glas)
+                        if (glas !== "") {
+													glasovi[glas]++;
+                        }
+										});
+                    response.end("Glasanje prihvaceno")					
                     break;
           case "/rezultat":
                     response.writeHead(200, {"Content-Type": "text/plain"});
