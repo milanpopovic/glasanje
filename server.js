@@ -64,11 +64,13 @@ var server = http.createServer(function(request, response) {
                     break;
            case "/glasanje":
                     ip = request.connection.remoteAddress
+/*
         						if (ip === poslednjaIP) {
           						response.writeHead(200, {'Content-Type': 'text/plain'});
           					  response.end("Ne možete da glasate više puta")
           						return
         						}
+*/
         						poslednjaIP = ip
                     response.writeHead(200, {'Content-Type': 'text/plain'});
           					response.end("Glasanje prihvaceno")
