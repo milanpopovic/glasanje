@@ -1,0 +1,12 @@
+{ "predmetGlasanja": "Glasajte za najbolju web aplikaciju",
+  "formaZaGlasanje": [
+             "To-do lista",
+             "Kontakti",
+             "Šoping lista",
+             "Registracija korisnika",
+             "Anketa"
+                     ],
+  "uputstvo": ["Čekirajte samo jednu od ponuđenih opcija.",
+              "Ne možete da glasate više puta."
+              ]
+}

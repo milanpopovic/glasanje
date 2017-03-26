@@ -1,0 +1,43 @@
+#predmetGlasanja {
+	  font-size: large;
+	  font-weight: bold;
+	  color: green;
+    padding-bottom: 1em
+	}
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+#dugme-za-glasanje{
+  color: white;
+  background-color: red;
+  font-size:x-large;
+  font-weight: bold;
+  padding: 4px 4px 4px 4px
+}
+.cb-tekst {
+  font-size: large;
+  padding-bottom: 1em;
+  color: blue;
+  font-weight: bold
+}
+
+#uputstvo {
+  padding-top: 8px 8px 8px 8px;
+  background-color: yellow;
+  color: blue;
+  width: 20em;
+  font-size: small
+}
+
+#dugme-za-rezultat {
+  color: white;
+  background-color: green;
+  font-size: small;
+  font-weight: bold;
+  padding: 4px 4px 4px 4px
+}
+
+body {
+  margin-left: 3em;
+}
