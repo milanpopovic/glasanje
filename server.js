@@ -47,13 +47,11 @@ var server = http.createServer(function(request, response) {
           
           case "/": 
         						response.writeHead(200, {"Content-Type": "text/html"});
-        						response.write(index);
-                    response.end();
+                    response.end(index);
                     break;
           case "/glasanje.css":
                     response.writeHead(200, {"Content-Type": "text/css"});
-        						response.write(stilovi);
-                    response.end();
+                    response.end(stilovi);
                     break;
           case "/favicon.ico":
                     response.writeHead(200, {'Content-Type': 'image/gif' });
@@ -61,14 +59,12 @@ var server = http.createServer(function(request, response) {
                     break;
           case "/glasanje.js":
 										response.writeHead(200, {"Content-Type": "text/plain"});
-        						response.write(glasanjejs);
-                    response.end();
+                    response.end(glasanjejs);
                     break;
           case "/glasanje":
                     ip = request.connection.remoteAddress
 /*
         						if (ip === poslednjaIP) {
-          						response.writeHead(200, {'Content-Type': 'text/plain'});
           					  response.end("Ne možete da glasate više puta")
           						return
         						}
@@ -82,17 +78,14 @@ var server = http.createServer(function(request, response) {
                         glas = trim(glas)
 												glasovi[glas]=glasovi[glas]+1;
                         response.end("Glasanje prihvaceno: "+glas)	
-										});
-                    //response.end("Glasanje prihvaceno")	
+										});	
                     break;
           case "/rezultat":
                     response.writeHead(200, {"Content-Type": "text/plain"});
-        						response.write(JSON.stringify(glasovi));
-                    response.end();
+                    response.end(JSON.stringify(glasovi));
                     break;
           default: break;
         }
-        //response.end();
 });
 var port = process.env.PORT || 8000;
 console.log("Cekam zahteve na portu: 8000")
