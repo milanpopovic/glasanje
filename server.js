@@ -75,12 +75,11 @@ var server = http.createServer(function(request, response) {
                     var glas = ""
 										request.on('data', function (data) {
 												glas += data.toString('utf8');
-										});
-                    
-										request.on('end', function () {                            
+										}).on('end', function () {                            
                         glas = trim(glas)
 												glasovi[glas]=glasovi[glas]+1;
                         glasovi[0]++;
+
 										});
                    	
                     response.end("Glasanje prihvaceno: " + glas)	
