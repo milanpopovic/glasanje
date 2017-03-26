@@ -71,18 +71,17 @@ var server = http.createServer(function(request, response) {
         						}
 */
         						poslednjaIP = ip
-										var glas = '';
+                    var glas = ""
 										request.on('data', function (data) {
 												glas += data;
 										});
+
 										request.on('end', function () {                            
-                        glas = trim(glas)
-                        if (glas !== "") {
-													glasovi[glas]=glasovi[glas]+1;
-                        }
+                        glas = trim(glas.toString('utf8'))
+												glasovi[glas]=glasovi[glas]+1;
 										});
-                    //response.end("Glasanje prihvaceno")		
-                    response.end(JSON.stringify(glasovi))			
+                   	
+                    response.end("Glasanje prihvaceno: " + glas)	
                     break;
           case "/rezultat":
                     response.writeHead(200, {"Content-Type": "text/plain"});
