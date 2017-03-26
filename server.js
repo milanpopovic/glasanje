@@ -10,10 +10,10 @@ var glasanjejs = fs.readFileSync("glasanje.js","utf8");
 var icon = fs.readFileSync("favicon.ico");
 
 // Rezultati glasanja
-var glasovi={}
+var glasovi={};
 
 // IP adresa glasača
-poslednjaIP = ""
+var poslednjaIP = "";
 
 // Helper funkcija
 function trim(s){ 
@@ -71,9 +71,9 @@ var server = http.createServer(function(request, response) {
         						}
 */
         						poslednjaIP = ip
-                    response.writeHead(200, {'Content-Type': 'text/plain'});
-          					response.end("Glasanje prihvaceno")
-
+                    //response.writeHead(200, {'Content-Type': 'text/plain'});
+          					//response.end("Glasanje prihvaceno")
+/*
                     if (request.method == 'POST') {
 												var glas = '';
 
@@ -88,6 +88,18 @@ var server = http.createServer(function(request, response) {
                             }
 												});
 										}
+*/
+                    glas="";
+                    request.on('data', function (data) {
+														glas += data;
+												});
+
+										request.on('end', function () {
+                            glas = trim(glas)
+                            if (glas !== "") {
+															glasovi[glas]++;
+                            }
+												});
                     break;
           case "/rezultat":
                     response.writeHead(200, {"Content-Type": "text/plain"});
