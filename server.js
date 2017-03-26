@@ -11,6 +11,7 @@ var icon = fs.readFileSync("favicon.ico");
 
 // Rezultati glasanja
 var glasovi={};
+glasovi[0]=0;
 
 // IP adresa glasača
 var poslednjaIP = "";
@@ -73,12 +74,13 @@ var server = http.createServer(function(request, response) {
         						poslednjaIP = ip
                     var glas = ""
 										request.on('data', function (data) {
-												glas += data;
+												glas += data.toString('utf8');
 										});
-
+                    
 										request.on('end', function () {                            
-                        glas = trim(glas.toString('utf8'))
+                        glas = trim(glas)
 												glasovi[glas]=glasovi[glas]+1;
+                        glasovi[0]++;
 										});
                    	
                     response.end("Glasanje prihvaceno: " + glas)	
