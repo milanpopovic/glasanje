@@ -11,7 +11,6 @@ var icon = fs.readFileSync("favicon.ico");
 
 // Rezultati glasanja
 var glasovi={};
-glasovi[0]=0;
 
 // IP adresa glasača
 var poslednjaIP = "";
@@ -30,7 +29,7 @@ function renderIndexTemplate() {
      glasovi[json.formaZaGlasanje[i]] = 0;
 	}
 	formaZaGlasanje+='<span id="dugme-za-glasanje">Glasaj</span>'
-	index = index.replace('{{formaZaGlasanje}}',formaZaGlasanje)
+	index = index.replace('{{formaZaGlasanje}}', formaZaGlasanje)
   uputstva = json.uputstvo
   uputstvo='<div id="uputstvo">'
   for (i in uputstva){
@@ -49,10 +48,12 @@ var server = http.createServer(function(request, response) {
           case "/": 
         						response.writeHead(200, {"Content-Type": "text/html"});
         						response.write(index);
+                    response.end();
                     break;
           case "/glasanje.css":
                     response.writeHead(200, {"Content-Type": "text/css"});
         						response.write(stilovi);
+                    response.end();
                     break;
           case "/favicon.ico":
                     response.writeHead(200, {'Content-Type': 'image/gif' });
@@ -61,6 +62,7 @@ var server = http.createServer(function(request, response) {
           case "/glasanje.js":
 										response.writeHead(200, {"Content-Type": "text/plain"});
         						response.write(glasanjejs);
+                    response.end();
                     break;
           case "/glasanje":
                     ip = request.connection.remoteAddress
@@ -75,22 +77,22 @@ var server = http.createServer(function(request, response) {
                     var glas = ""
 										request.on('data', function (data) {
 												glas += data.toString('utf8');
-										}).on('end', function () {                            
+										});
+                    request.on('end', function () {                            
                         glas = trim(glas)
 												glasovi[glas]=glasovi[glas]+1;
-                        glasovi[0]++;
-
+                        response.end("Glasanje prihvaceno: "+glas)	
 										});
-                   	
-                    response.end("Glasanje prihvaceno: " + glas)	
+                    //response.end("Glasanje prihvaceno")	
                     break;
           case "/rezultat":
                     response.writeHead(200, {"Content-Type": "text/plain"});
         						response.write(JSON.stringify(glasovi));
+                    response.end();
                     break;
           default: break;
         }
-        response.end();
+        //response.end();
 });
 var port = process.env.PORT || 8000;
 console.log("Cekam zahteve na portu: 8000")
