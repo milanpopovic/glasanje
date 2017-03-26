@@ -38,7 +38,7 @@ function renderIndexTemplate() {
   uputstvo += '</div>'
   index = index.replace('{{uputstvo}}',uputstvo)
 }
-
+renderIndexTemplate()
 // Kreiranje servera
 var server = http.createServer(function(request, response) {
      
@@ -47,7 +47,6 @@ var server = http.createServer(function(request, response) {
           
           case "/": 
         						response.writeHead(200, {"Content-Type": "text/html"});
-                    renderIndexTemplate()
         						response.write(index);
                     break;
           case "/glasanje.css":
@@ -74,6 +73,7 @@ var server = http.createServer(function(request, response) {
         						poslednjaIP = ip
                     response.writeHead(200, {'Content-Type': 'text/plain'});
           					response.end("Glasanje prihvaceno")
+
                     if (request.method == 'POST') {
 												var glas = '';
 
