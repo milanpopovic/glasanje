@@ -95,5 +95,6 @@ var server = http.createServer(function(request, response) {
         }
         response.end();
 });
+var port = process.env.PORT || 8000;
 console.log("Cekam zahteve na portu: 8000")
-server.listen(8000);
+server.listen(port);
