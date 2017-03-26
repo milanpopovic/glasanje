@@ -81,7 +81,8 @@ var server = http.createServer(function(request, response) {
 													glasovi[glas]++;
                         }
 										});
-                    response.end("Glasanje prihvaceno")					
+                    //response.end("Glasanje prihvaceno")		
+                    response.end(JSON.stringify(glasovi))			
                     break;
           case "/rezultat":
                     response.writeHead(200, {"Content-Type": "text/plain"});
