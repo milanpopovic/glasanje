@@ -78,7 +78,7 @@ var server = http.createServer(function(request, response) {
 										request.on('end', function () {                            
                         glas = trim(glas)
                         if (glas !== "") {
-													glasovi[glas]++;
+													glasovi[glas]=glasovi[glas]+1;
                         }
 										});
                     //response.end("Glasanje prihvaceno")		
