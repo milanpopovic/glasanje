@@ -1,0 +1,20 @@
+{
+  "name": "glasanje",
+  "version": "1.0.0",
+  "description": "Web aplikacija za glasanje",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milanpopovic/glasanje.git"
+  },
+  "author": "Milan Popovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milanpopovic/glasanje/issues"
+  },
+  "homepage": "https://github.com/milanpopovic/glasanje#readme"
+}
